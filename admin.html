@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Font Awesome ikonları için -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Chart.js kütüphanesi -->
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <h2>Admin Paneli</h2>
+            <ul>
+                <li>
+                    <a href="#" class="active"><i class="fas fa-home"></i> Dashboard</a></li> 
+                <li>
+                    <a href="add_user.html"><i class="fas fa-user"></i> Kullanıcılar</a></li> 
+                <li>
+                    <a href="add_data.html"><i class="fas fa-table"></i> Veri Ekleme</a></li>
+                <li>
+                    <a href="data_delete.html"><i class="fas fa-table"></i> Veri Silme</a>
+                </li> 
+                <li>
+                    <a href="data_list.html"><i class="fas fa-table"></i> Veri Arama</a></li> 
+                    <li>
+                    <a href="#"><i class="fas fa-cog"></i> Ayarlar</a></li> 
+                    <li><a href="index.html">
+                        <i class="fa fa-sign-out" aria-hidden="true"> Çıkış Yap</a></i> 
+                        <!-- Diğer sayfa linkleri buraya eklenebilir -->
+                <!-- Diğer sayfa linkleri buraya eklenebilir -->
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Navbar -->
+            <header>
+                <div class="search-area">
+                    <input type="text" placeholder="Ara...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+                <div class="user-area">
+                    <a href="#"><i class="fas fa-bell"></i></a>
+                    <a href="#"><i class="fas fa-user-circle"></i> Admin</a>
+                </div>
+            </header>
+
+            <!-- Dashboard İçeriği -->
+            <section class="dashboard">
+                <div class="grid">
+                    <div class="card">
+                        <div class="card-icon"><i class="fas fa-users"></i></div>
+                        <div class="card-content">
+                            <h3>Kullanıcı Sayısı</h3>
+                            <p>2456</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon"><i class="fas fa-chart-line"></i></div>
+                        <div class="card-content">
+                            <h3>Günlük Ziyaretçi</h3>
+                            <p id="visitorCount">0</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon"><i class="fas fa-dollar-sign"></i></div>
+                        <div class="card-content">
+                            <h3>Günlük Gelir</h3>
+                            <p>$4567</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <canvas id="monthlyChart" width="400" height="400"></canvas>
+                    </div>
+                </div>
+
+                <div class="table">
+                    <h2>Veri Tablosu</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>İsim</th>
+                                <th>Email</th>
+                                <th>Üyelik Tipi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>John Doe</td>
+                                <td>john.doe@example.com</td>
+                                <td>Admin</td>
+                            </tr>
+                            <!-- Veri tablosu içeriği dinamik olarak eklenebilir -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </div>
+    <script src="js/admin.js"></script>
+    <script>
+        // Günlük ziyaretçi sayısını takip eden değişken
+        let visitorCount = 0;
+
+        // Günlük ziyaretçi sayısını 1 artıran fonksiyon
+        function increaseVisitorCount() {
+            visitorCount++;
+            document.getElementById('visitorCount').textContent = visitorCount;
+        }
+
+        // Ziyaretçi sayısını artır
+        increaseVisitorCount();
+
+        // Veri
+        const monthlyData = {
+            labels: ["Olumlu", "Olumsuz", "Sabit"],
+            datasets: [{
+                data: [30, 20, 10], // Örnek veri
+                backgroundColor: ["#28a745", "#dc3545", "#6c757d"],
+                hoverBackgroundColor: ["#218838", "#c82333", "#5a6268"]
+            }]
+        };
+
+        // Seçenekler
+        const chartOptions = {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(tooltipItem) {
+                            return tooltipItem.label + ': ' + tooltipItem.raw.toFixed(2) + '%';
+                        }
+                    }
+                }
+            }
+        };
+
+        // Grafik oluştur
+        const ctx = document.getElementById('monthlyChart').getContext('2d');
+        const myDoughnutChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: monthlyData,
+            options: chartOptions
+        });
+    </script>
+</body>
+</html>

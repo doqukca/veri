@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Paneli - Kullanıcı Ekle</title>
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <h2>Admin Paneli</h2>
+            <ul>
+                <li><a href="admin.html">Anasayfa</a></li>
+                <li><a href="add_user.html" class="active">Kullanıcı Ekle</a></li>
+                <li><a href="#">Kullanıcılar</a></li>
+                <li><a href="#">Grafikler</a></li>
+                <li><a href="#">Veri Tabloları</a></li>
+                <li><a href="#">Ayarlar</a></li>
+                <!-- Diğer sayfa linkleri buraya eklenebilir -->
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Navbar -->
+            <header>
+                <div class="search-area">
+                    <input type="text" placeholder="Ara...">
+                    <button>Ara</button>
+                </div>
+                <div class="user-area">
+                    <a href="#"><i class="fas fa-bell"></i></a>
+                    <a href="#"><i class="fas fa-user-circle"></i> Admin</a>
+                </div>
+            </header>
+
+            <!-- Kullanıcı Ekleme Formu -->
+            <section class="form-section">
+                <h2>Kullanıcı Ekle</h2>
+                <form id="addUserForm">
+                    <label for="username">Kullanıcı Adı:</label>
+                    <input type="text" id="username" name="username" required>
+
+                    <label for="password">Şifre:</label>
+                    <input type="password" id="password" name="password" required>
+
+                    <label for="role">Rol:</label>
+                    <select id="role" name="role">
+                        <option value="admin">Admin</option>
+                        <option value="user">User</option>
+                    </select>
+
+                    <button type="submit">Kullanıcı Ekle</button>
+                </form>
+            </section>
+        </div>
+    </div>
+    <script src="js/admin.js"></script>
+</body>
+</html>

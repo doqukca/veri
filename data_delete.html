@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veri Silme</title>
+    <link rel="stylesheet" href="css/delete.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <h2>Sidebar</h2>
+            <ul>
+                <li><a href="add_data.html">Veri Ekle</a></li>
+                <li><a href="admin.html">Anasayfaya Dön</a></li>
+                <li><a href="data_list.html">Arama Yapın</a></li>
+                <li><a href="data_list.html">Kaydedilen Veriler</a></li>
+                <!-- Diğer sayfa linkleri buraya eklenebilir -->
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <h1>Veri Silme</h1>
+            <form id="deleteForm">
+                <label for="deleteName">Silinecek İsim:</label>
+                <input type="text" id="deleteName" required>
+                <button type="submit">Sil</button>
+            </form>
+        </div>
+    </div>
+    <script src="js/delete.js"></script>
+</body>
+</html>

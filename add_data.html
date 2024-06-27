@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veri Ekleme</title>
+    <link rel="stylesheet" href="css/add_data.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <h2>Sidebar</h2>
+            <ul>
+                <li><a href="add_data.html">Veri Ekle</a></li>
+                <li><a href="admin.html">Anasayfaya Dön</a></li>
+                <li><a href="data_list.html">Arama Yapın</a></li>
+                <li><a href="data_delete.html">Veri Silme</a></li>
+                <!-- Diğer sayfa linkleri buraya eklenebilir -->
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <h1>Veri Ekleme</h1>
+            <form id="addForm">
+                <label for="name">İsim:</label>
+                <input type="text" id="name" required><br><br>
+
+                <label for="status">Durum:</label>
+                <select id="status">
+                    <option value="olumlu">Olumlu</option>
+                    <option value="olumsuz">Olumsuz</option>
+                    <option value="sabit">Sabit</option>
+                </select><br><br>
+
+                <label for="address">Adres:</label>
+                <input type="text" id="address" required><br><br>
+
+                <label for="inspection">Yapı Denetimi:</label>
+                <select id="inspection">
+                    <option value="T.U.S  Fİ İzmir">T.U.S</option>
+                    <option value="İzmir">İzmir</option>
+                    <option value="Fi">Fi</option>
+                    <!-- İhtiyaca göre daha fazla tag seçeneği ekleyebilirsiniz -->
+                </select><br><br>
+
+                <label for="date">Tarih:</label>
+                <input type="date" id="date" required><br><br>
+
+                <button type="submit">Ekle</button>
+            </form>
+
+            <!-- Tablo için container -->
+            <div id="tableContainer">
+                <h2>Kaydedilen Veriler</h2>
+                <table id="dataTable">
+                    <thead>
+                        <tr>
+                            <th>İsim</th>
+                            <th>Durum</th>
+                            <th>Adres</th>
+                            <th>Yapı Denetimi</th>
+                            <th>Tarih</th>
+                            <th>7 Gün Sonra</th>
+                            <th>28 Gün Sonra</th>
+                        </tr>
+                    </thead>
+                    <tbody id="dataTableBody">
+                        <!-- Veriler dinamik olarak buraya eklenecek -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/admin.js"></script>
+</body>
+</html>
